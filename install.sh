@@ -50,6 +50,18 @@ error() {
 
 
 ############################ SETUP FUNCTIONS
+do_backup() {
+    if [ -e "$1" ] || [ -e "$2" ] || [ -e "$3" ]; then
+        msg "Attempting to back up your original vim configuration."
+        today=`date +%Y%m%d_%s`
+        for i in "$1" "$2" "$3"; do
+            [ -e "$i" ] && [ ! -L "$i" ] && mv -v "$i" "$i.$today";
+        done
+        ret="$?"
+        success "Your original vim configuration has been backed up."
+   fi
+}
+
 create_symlinks() {
     local source_path="$1"
     local target_path="$2"
@@ -97,27 +109,45 @@ install_pathogen() {
 	if [ ! -e "$2" ]; then
 		mkdir -p ~/.vim/autoload ~/.vim/bundle &&curl -LSso "$2" "$1"
 		reg="$?"
-		msg "Install pathogen success"
+    	printf "\33[32m[✔]\33[0m install pathogen success\n"
 	else
 		msg "already has pathogen."
 	fi
 }
 
-checkout_bundle() {
+check_bundle() {
 	if [ ! -e "$BUNDLE_PATH" ]; then
 	    mkdir -p "$BUNDLE_PATH"
-		success "Create $BUNDLE_PATH success"
+    	printf "\33[32m[✔]\33[0m create bundle dir success\n"
 	else
 		msg "already has $BUNDLE_PATH"
 	fi
 }
+
+check_backup() {
+	if [ -z $1 ]; then
+    	printf "\33[31m[✘]\33[0m no input, exit!\n"
+		return 1;
+	fi
+	if [ $1 = "yes" ]; then
+		do_backup		"$HOME/.vim" \
+						"$HOME/.vimrc" \
+        	        	"$HOME/.gvimrc"
+
+    	printf "\33[32m[✔]\33[0m backup .vim success\n"
+	fi
+}
+
 ############################ MAIN()
 variable_set "$HOME"
 program_must_exist "git"
 program_must_exist "vim"
 program_must_exist "curl"
 
-checkout_bundle
+read -p "do you want backup your .vim ? yes or no : " answer
+check_backup 	"$answer"
+
+check_bundle
 
 install_pathogen $OGEN_URI $OGEN_PATH
 
