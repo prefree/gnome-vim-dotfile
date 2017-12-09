@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 ############################  SETUP PARAMETERS
-app_name='vim-dotfile'
 [ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
 [ -z "$BUNDLE_PATH" ] && BUNDLE_PATH="$HOME/.vim/bundle"
 
@@ -12,12 +11,13 @@ app_name='vim-dotfile'
 [ -z "$TAGLIST_PATH" ] && TAGLIST_PATH="$HOME/.vim/bundle/taglist"
 
 [ -z "$CTRLP_URI" ] && CTRLP_URI="https://github.com/kien/ctrlp.vim.git"
-[ -z "$CTRLP_PATH" ] && CTRLP_PATH="$HOME/.vim/bundle/ctrlp"
+[ -z "$CTRLP_PATH" ] && CTRLP_PATH="$HOME/.vim/bundle/ctrlp.vim"
 
 [ -z "$NERDTREE_URI" ] && NERDTREE_URI="https://github.com/scrooloose/nerdtree.git"
 [ -z "$NERDTREE_PATH" ] && NERDTREE_PATH="$HOME/.vim/bundle/nerdtree"
 
-[ -z "$VUNDLE_URI" ] && VUNDLE_URI=""
+[ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
+[ -z "$VUNDLE_PATH" ] && VUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
 
 ############################ BASIC SETUP TOOLS
 msg() {
@@ -136,4 +136,8 @@ sync_plugin       "$CTRLP_PATH" \
                   "master" \
                   "ctrlp"
 
+sync_plugin       "$VUNDLE_PATH" \
+                  "$VUNDLE_URI" \
+                  "master" \
+                  "vundle"
 
