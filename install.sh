@@ -20,6 +20,9 @@
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
 [ -z "$VUNDLE_PATH" ] && VUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
 
+[ -z "$SOLARIZED_URI" ] && SOLARIZED_URI="git://github.com/altercation/vim-colors-solarized.git"
+[ -z "$SOLARIZED_PATH" ] && SOLARIZED_PATH="$HOME/.vim/bundle/vim-colors-solarized"
+
 [ -z "$OMYZSH_URI" ] && OMYZSH_URI="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 ############################ BASIC SETUP TOOLS
 msg() {
@@ -163,8 +166,6 @@ program_must_exist "curl"
 
 install_universal_plugin
 
-install_omyzsh
-
 read -p "do you want backup your .vim ? yes or no : " answer
 check_backup 	"$answer"
 
@@ -195,5 +196,11 @@ sync_plugin       "$VUNDLE_PATH" \
                   "master" \
                   "vundle"
 
+sync_plugin       "$SOLARIZED_PATH" \
+                  "$SOLARIZED_URI" \
+                  "master" \
+                  "solarized"
+
+install_omyzsh
 msg              "\nThanks for installing $app_name."
 msg              "© `date +%Y` https://github.com/prefree/gnome-vim-dotfile"
