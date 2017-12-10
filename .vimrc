@@ -52,9 +52,10 @@ nnoremap <leader>f :NERDTreeFind<CR>
 let g:ctrlp_max_height = 20
 
 "YouCompleteMe
-let g:ycm_server_python_interpreter='/usr/bin/python3'
+let g:ycm_server_python_interpreter='/usr/bin/python3.5'
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
-"let g:ycm_global_ycm_extra_conf='/home/brooks/src/amlogic/m9du/.ycm_extra_conf.py'
+let g:ycm_seed_identifiers_with_syntax = 1
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
 "
 """""""""""""""""""""""cscope""""""""""""""""""""""""""""""""""
 if has("cscope")
