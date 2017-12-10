@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 ############################  SETUP PARAMETERS
-[ -z "$APP_PATH" ] && APP_PATH="$HOME/.spf13-vim-3"
+
+[ -z "$APP_PATH" ] && APP_PATH="$HOME/.gnome-vim-dotfile"
 [ -z "$BUNDLE_PATH" ] && BUNDLE_PATH="$HOME/.vim/bundle"
 
 [ -z "$OGEN_PATH" ] && OGEN_PATH="$HOME/.vim/autoload/pathogen.vim"
@@ -19,6 +20,7 @@
 [ -z "$VUNDLE_URI" ] && VUNDLE_URI="https://github.com/VundleVim/Vundle.vim.git"
 [ -z "$VUNDLE_PATH" ] && VUNDLE_PATH="$HOME/.vim/bundle/Vundle.vim"
 
+[ -z "$OMYZSH_URI" ] && OMYZSH_URI="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 ############################ BASIC SETUP TOOLS
 msg() {
     printf '%b\n' "$1" >&2
@@ -66,7 +68,10 @@ create_symlinks() {
     local source_path="$1"
     local target_path="$2"
 
-    lnif "$source_path/.vimrc"         "$target_path/.vimrc"
+    lnif "$source_path/.vimrc"         		"$target_path/.vimrc"
+    lnif "$source_path/.ycm_extra_conf.py"      "$target_path/.ycm_extra_conf.py"
+    lnif "$source_path/.zshrc"       		"$target_path/.zshrc"
+    lnif "$source_path/dircolors.ansi-dark"     "$target_path/.dir_colors/dircolors"
     ret="$?"
     success "Setting up vim symlinks."
 }
@@ -115,13 +120,14 @@ install_pathogen() {
 	fi
 }
 
-check_bundle() {
+check_env() {
 	if [ ! -e "$BUNDLE_PATH" ]; then
 	    mkdir -p "$BUNDLE_PATH"
     	printf "\33[32m[✔]\33[0m create bundle dir success\n"
 	else
 		msg "already has $BUNDLE_PATH"
 	fi
+	mkdir -p ~/.dir_colors
 }
 
 check_backup() {
@@ -138,18 +144,36 @@ check_backup() {
 	fi
 }
 
+install_omyzsh() {	
+	sh -c "$(wget $OMYZSH_URI -O -)"
+    	printf "\33[32m[✔]\33[0m install omy zsh success\n"
+}
+
+install_universal_plugin() {
+	sudo apt-get install zsh
+	chsh -s $(which zsh)
+	sudo apt-get install dconf-cli
+	sudo apt-get install ctags
+}
 ############################ MAIN()
 variable_set "$HOME"
 program_must_exist "git"
 program_must_exist "vim"
 program_must_exist "curl"
 
+install_universal_plugin
+
+install_omyzsh
+
 read -p "do you want backup your .vim ? yes or no : " answer
 check_backup 	"$answer"
 
-check_bundle
+check_env
 
 install_pathogen $OGEN_URI $OGEN_PATH
+
+create_symlinks   "$APP_PATH"	\
+		  "$HOME"
 
 sync_plugin       "$TAGLIST_PATH" \
                   "$TAGLIST_URI" \
@@ -171,3 +195,5 @@ sync_plugin       "$VUNDLE_PATH" \
                   "master" \
                   "vundle"
 
+msg              "\nThanks for installing $app_name."
+msg              "© `date +%Y` https://github.com/prefree/gnome-vim-dotfile"
