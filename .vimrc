@@ -27,7 +27,7 @@ set noswapfile
 set nocompatible
 set backspace=indent,eol,start
 
-set fdm=syntax
+"set fdm=syntax
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
@@ -52,7 +52,7 @@ nnoremap <leader>f :NERDTreeFind<CR>
 let g:ctrlp_max_height = 20
 
 "YouCompleteMe
-let g:ycm_server_python_interpreter='/usr/bin/python3.5'
+let g:ycm_server_python_interpreter='/usr/bin/python2.7'
 let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 let g:ycm_seed_identifiers_with_syntax = 1
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |

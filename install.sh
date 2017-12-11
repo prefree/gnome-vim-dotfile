@@ -184,6 +184,8 @@ check_backup 	"$answer"
 
 check_env
 
+install_omyzsh
+
 install_pathogen $OGEN_URI $OGEN_PATH
 
 create_symlinks   "$APP_PATH"	\
@@ -214,8 +216,8 @@ sync_plugin       "$SOLARIZED_PATH" \
                   "master" \
                   "solarized"
 
-setup_vundle
 
-install_omyzsh
+#setup_vundle
+
 msg              "\nThanks for installing $app_name."
 msg              "© `date +%Y` https://github.com/prefree/gnome-vim-dotfile"
