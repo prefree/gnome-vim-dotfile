@@ -158,6 +158,19 @@ install_universal_plugin() {
 	sudo apt-get install dconf-cli
 	sudo apt-get install ctags
 }
+
+setup_vundle() {
+    local system_shell="$SHELL"
+    export SHELL='/bin/sh'
+
+    vim \
+        "+PluginInstall" \
+        "+qall"
+
+    export SHELL="$system_shell"
+
+    success "Now updating/installing plugins using Vundle"
+}
 ############################ MAIN()
 variable_set "$HOME"
 program_must_exist "git"
@@ -200,6 +213,8 @@ sync_plugin       "$SOLARIZED_PATH" \
                   "$SOLARIZED_URI" \
                   "master" \
                   "solarized"
+
+setup_vundle
 
 install_omyzsh
 msg              "\nThanks for installing $app_name."
