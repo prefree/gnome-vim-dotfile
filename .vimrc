@@ -27,6 +27,7 @@ set noswapfile
 set nocompatible
 set backspace=indent,eol,start
 
+set tabstop=4
 "set fdm=syntax
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -49,7 +50,7 @@ nnoremap <leader>f :NERDTreeFind<CR>
 "map <C-e> <plug>NERDTreeToggle<CR>
 
 """""""""""""""""""""""CtrlP"""""""""""""""""""""""""""""""""""
-let g:ctrlp_max_height = 20
+let g:ctrlp_max_height = 40
 
 "YouCompleteMe
 let g:ycm_server_python_interpreter='/usr/bin/python2.7'

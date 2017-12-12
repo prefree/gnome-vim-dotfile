@@ -74,6 +74,7 @@ create_symlinks() {
     lnif "$source_path/.vimrc"         		"$target_path/.vimrc"
     lnif "$source_path/.ycm_extra_conf.py"      "$target_path/.ycm_extra_conf.py"
     lnif "$source_path/.zshrc"       		"$target_path/.zshrc"
+    lnif "$source_path/.bashrc"       		"$target_path/.bashrc"
     lnif "$source_path/dircolors.ansi-dark"     "$target_path/.dir_colors/dircolors"
     ret="$?"
     success "Setting up vim symlinks."
