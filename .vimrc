@@ -16,12 +16,20 @@ Plugin 'Valloric/YouCompleteMe'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+"""""""""""""""""""""""solarized theme"""""""""""""""""""""""""
+syntax enable
+set background=dark
+colorscheme solarized
+
 """""""""""""""""""""""base setting start"""""""""""""""""""""""""
 syntax on
 set nu
 set ignorecase
 set nobackup
 set noswapfile
+set hlsearch
+set cursorline
+highlight CursorLine  ctermbg=DarkCyan ctermfg=black
 
 "disable vi
 set nocompatible
@@ -51,6 +59,16 @@ nnoremap <leader>f :NERDTreeFind<CR>
 
 """""""""""""""""""""""CtrlP"""""""""""""""""""""""""""""""""""
 let g:ctrlp_max_height = 40
+let g:ctrlp_match_window = 'top'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
 
 "YouCompleteMe
 let g:ycm_server_python_interpreter='/usr/bin/python2.7'
@@ -82,8 +100,4 @@ nmap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 
-"""""""""""""""""""""""solarized theme"""""""""""""""""""""""""
-syntax enable
-set background=dark
-colorscheme solarized
 
