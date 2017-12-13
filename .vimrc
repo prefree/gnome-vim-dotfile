@@ -23,13 +23,14 @@ colorscheme solarized
 
 """""""""""""""""""""""base setting start"""""""""""""""""""""""""
 syntax on
-set nu
+set rnu
 set ignorecase
 set nobackup
 set noswapfile
 set hlsearch
 set cursorline
-highlight CursorLine  ctermbg=DarkCyan ctermfg=black
+"highlight CursorLine  ctermbg=DarkCyan ctermfg=black
+set cc=81
 
 "disable vi
 set nocompatible
@@ -89,6 +90,8 @@ if has("cscope")
     endif
     set csverb
 endif
+nnoremap <silent> <F3> :cope 40<CR>
+nnoremap <silent> <F4> :cclose<CR>
 
 " key mappings for cscope
 nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
