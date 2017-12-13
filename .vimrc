@@ -12,6 +12,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'git://git.wincent.com/command-t.git'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -90,7 +91,7 @@ if has("cscope")
     endif
     set csverb
 endif
-nnoremap <silent> <F3> :cope 40<CR>
+nnoremap <silent> <F3> :cope 20<CR>
 nnoremap <silent> <F4> :cclose<CR>
 
 " key mappings for cscope
