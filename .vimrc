@@ -91,17 +91,17 @@ if has("cscope")
     endif
     set csverb
 endif
-nnoremap <silent> <F3> :cope 20<CR>
+"nnoremap <silent> <F3> :cope 20<CR>
 nnoremap <silent> <F4> :cclose<CR>
 
 " key mappings for cscope
-nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <leader>s :cs find s <C-R>=expand("<cword>")<CR><CR>:top copen 20<CR>
+nmap <leader>g :cs find g <C-R>=expand("<cword>")<CR><CR>:top copen 20<CR>
+nmap <leader>c :cs find c <C-R>=expand("<cword>")<CR><CR>:top copen 20<CR>
+nmap <leader>t :cs find t <C-R>=expand("<cword>")<CR><CR>:top copen 20<CR>
+nmap <leader>e :cs find e <C-R>=expand("<cword>")<CR><CR>:top copen 20<CR>
 nmap <leader>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <leader>i :cs find i <C-R>=expand("<cfile>")<CR><CR>
-nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
+nmap <leader>d :cs find d <C-R>=expand("<cword>")<CR><CR>:top copen 20<CR>
 
 
