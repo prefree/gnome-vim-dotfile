@@ -122,5 +122,6 @@ if [ -f ~/.dir_colors/dircolors ]
 fi
 
 export USE_CCACHE=1
+[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 
 PATH=$PATH:/opt/openjdk-1.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/gnutools/arc2.3-p0/elf32-4.2.1/bin:/opt/gnutools/arc2.3-p0/uclibc-4.2.1/bin:/opt/arc-4.8-amlogic-20130904-r2/bin:/opt/CodeSourcery/Sourcery_G++_Lite/bin:/opt/CodeSourcery/Sourcery_G++_Lite/arm-none-eabi/bin:/opt/CodeSourcery/Sourcery_G++_Lite/arm-none-linux-gnueabi/bin:/opt/gcc-linaro-arm-linux-gnueabihf/bin:/opt/gcc-linaro-aarch64-linux-gnu-4.9-2014.09_linux/bin:/opt/gcc-linaro-aarch64-none-elf-4.8-2013.11_linux/bin:/opt/aarch64-cros-linux-gnu/aarch64/bin:/opt/metaware-2013.09/MetaWare/arc/bin:/opt/fbc-main/tool/bin:/opt/gnutools/arc-4.8-amlogic-20130904-r2/bin
