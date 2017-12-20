@@ -106,3 +106,4 @@ PATH=$PATH:/opt/openjdk-1.8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bi
 
 [[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && . ~/.autojump/etc/profile.d/autojump.sh
 #autoload -U compinit && compinit -u
+setopt HIST_IGNORE_ALL_DUPS
