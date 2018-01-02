@@ -38,6 +38,7 @@ set nocompatible
 set backspace=indent,eol,start
 
 set tabstop=4
+set shiftwidth=4
 "set fdm=syntax
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
